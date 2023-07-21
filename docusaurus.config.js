@@ -2,7 +2,7 @@
  * @Author: zhanghao
  * @Date: 2023-06-05 17:14:31
  * @LastEditors: zhanghao
- * @LastEditTime: 2023-07-21 11:03:19
+ * @LastEditTime: 2023-07-21 18:04:28
  * @Description: 
  * @FilePath: \dcus\docusaurus.config.js
  */
@@ -82,7 +82,7 @@ const config = {
         items: [
           {
             // type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            // sidebarId: 'tutorialSidebar',
             position: 'left',
             label: '前端学习记录',
             // type: 'dropdown',
