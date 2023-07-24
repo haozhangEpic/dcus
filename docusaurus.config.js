@@ -2,7 +2,7 @@
  * @Author: zhanghao
  * @Date: 2023-06-05 17:14:31
  * @LastEditors: zhanghao
- * @LastEditTime: 2023-07-24 10:39:58
+ * @LastEditTime: 2023-07-24 11:03:16
  * @Description: 
  * @FilePath: \dcus\docusaurus.config.js
  */
@@ -91,7 +91,9 @@ const config = {
               { type: 'docSidebar', label: 'threejs', sidebarId: 'threejs' }
             ]
           },
-
+          {
+            type: 'docSidebar', label: 'docusaurus', sidebarId: 'docusaurus'
+          },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/haozhangEpic',
