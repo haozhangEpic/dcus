@@ -2,7 +2,7 @@
  * @Author: zhanghao
  * @Date: 2023-06-05 17:14:31
  * @LastEditors: zhanghao
- * @LastEditTime: 2023-07-21 18:04:28
+ * @LastEditTime: 2023-07-24 10:39:58
  * @Description: 
  * @FilePath: \dcus\docusaurus.config.js
  */
@@ -23,13 +23,13 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   // baseUrl: 'dcos/',
-  baseUrl: '/',
+  baseUrl: '/dcus/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'haozhangEpic', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-  deploymentBranch: 'master',
+  deploymentBranch: 'gh-pages',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   trailingSlash: false,
