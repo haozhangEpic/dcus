@@ -1,4 +1,4 @@
-name: Build app and deploy to aliyun
+name: 部署到腾讯云上
 on:
   #监听push操作
   push:
