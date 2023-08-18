@@ -2,7 +2,7 @@
  * @Author: zhanghao
  * @Date: 2023-06-05 17:14:31
  * @LastEditors: zhanghao
- * @LastEditTime: 2023-07-24 11:03:16
+ * @LastEditTime: 2023-08-18 16:13:19
  * @Description: 
  * @FilePath: \dcus\docusaurus.config.js
  */
@@ -22,8 +22,8 @@ const config = {
   url: 'https://haozhangEpic.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  // baseUrl: 'dcos/',
-  baseUrl: '/dcus/',
+  // baseUrl: '/dcos/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -37,8 +37,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'cn',
-    locales: ['cn'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -80,17 +80,11 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          {
-            // type: 'docSidebar',
-            // sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: '前端学习记录',
-            // type: 'dropdown',
-            items: [
-              { type: 'docSidebar', label: '无用信息', sidebarId: 'tutorialSidebar' },
-              { type: 'docSidebar', label: 'threejs', sidebarId: 'threejs' }
-            ]
-          },
+          { type: 'docSidebar', label: 'javascript', sidebarId: 'tutorialSidebar' },
+
+          { type: 'docSidebar', label: 'React', sidebarId: 'react' },
+          // {label:'Vue'},
+          { type: 'docSidebar', label: 'threejs', sidebarId: 'threejs' },
           {
             type: 'docSidebar', label: 'docusaurus', sidebarId: 'docusaurus'
           },
@@ -105,32 +99,32 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
+          // {
+          //   title: 'Docs',
+          //   items: [
+          //     {
+          //       label: 'Tutorial',
+          //       to: '/docs/intro',
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: 'Community',
+          //   items: [
+          //     {
+          //       label: 'Stack Overflow',
+          //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          //     },
+          //     {
+          //       label: 'Discord',
+          //       href: 'https://discordapp.com/invite/docusaurus',
+          //     },
+          //     {
+          //       label: 'QQ',
+          //       href: 'https://twitter.com/docusaurus',
+          //     },
+          //   ],
+          // },
           {
             title: 'More',
             items: [
@@ -140,7 +134,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/haozhangEpic',
               },
             ],
           },
