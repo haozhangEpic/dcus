@@ -41,4 +41,4 @@ jobs:
           # 用户
           REMOTE_USER: "root"
           # 目标地址 你在服务器上部署代码的地方
-          TARGET: "/user/local/build"
+          TARGET: "/usr/local/build"
