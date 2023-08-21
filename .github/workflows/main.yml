@@ -1,44 +1,43 @@
-name: 部署到腾讯云上
+name: GitHub Actions Build and Deploy Demo
 on:
-  #监听push操作
   push:
     branches:
-      # master分支，你也可以改成其他分支
       - master
 jobs:
-  build:
-    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 获取源码
       - name: Checkout
-        # 使用action库  actions/checkout获取源码
-        uses: actions/checkout@master
-      # 安装Node13
-      - name: use Node.js 16.20.0
-        # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v2
         with:
-          node-version: 16.20.0
-      # 安装依赖
-      - name: npm install
-        run: npm install
-      # 打包
-      - name: npm build
-        run: npm run build
-      # 部署到腾讯
-      - name: Deploy to Tencent
-        uses: easingthemes/ssh-deploy@v2.1.1
-        env:
-          # 私钥
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          # scp参数
-          ARGS: "-avzr --delete"
-          # 源目录，编译后生成的文件目录
-          SOURCE: "./build"
-          # 服务器ip：换成你的服务器IP
-          REMOTE_HOST: "122.51.217.136"
-          # 用户
-          REMOTE_USER: "root"
-          # 目标地址 你在服务器上部署代码的地方
-          TARGET: "/usr/local/build"
+          persist-credentials: false
+      - name: Install and Build
+        run: |
+          yarn install
+          yarn build
+      - name: Log in to Docker Hub #登陆docker
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  #docker的用户名
+          password: ${{ secrets.DOCKER_PASSWORD }}	#docker的密码
+
+      - name: Extract metadata (tags, labels) for Docker # 获取元数据包括tag和labels
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: herzorf/vite-project
+
+      - name: Build and push Docker image  #构建和发布 docker镜像
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}  #上一步所拿到的tags，默认是分支名字
+          labels: ${{ steps.meta.outputs.labels }} # 上一步所拿到的labels
+      - name: ssh docker login    # 登陆云服务器
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.TENCENT_CLOUD_IP }} #云服务器的ip
+          username: ${{ secrets.TENCENT_CLOUD_NAME }} #云服务器的用户名
+          password: ${{ secrets.TENCENT_CLOUD_PASSWORD }} #云服务器的密码
+          script: cd ~ && sh deploy.sh ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }} #运行脚本
