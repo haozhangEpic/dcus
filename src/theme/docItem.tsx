@@ -26,7 +26,7 @@ const DocItem: React.FC<DocItemProps> = ({ metadata }) => {
       )}
       {next && (
         <div className="custom-docitem-next">
-          <a href={next.permalink}>下一篇：{next.title}</a>
+          <a href={next.permalink}>下一篇：2222222222{next.title}</a>
         </div>
       )}
     </div>

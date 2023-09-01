@@ -148,6 +148,7 @@ const config = {
       },
       customDocsPath: './src/theme/DocItem.tsx'
     }),
+    plugins: ['docusaurus-plugin-sass'],
 };
 
 module.exports = config;
