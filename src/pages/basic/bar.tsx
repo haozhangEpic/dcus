@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
 import styles from './index.module.scss'
-import { Video } from './utils/Video'
+import { Video } from '../../utils/Video'
 
 let videoManager = new Video()
 export default function MyReactPage() {
