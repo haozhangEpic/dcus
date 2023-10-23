@@ -88,6 +88,9 @@ const config = {
           {
             type: 'docSidebar', label: 'docusaurus', sidebarId: 'docusaurus'
           },
+          {
+            type: 'docSidebar', label: '面试题收集', sidebarId: 'study'
+          },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/haozhangEpic',
@@ -140,7 +143,7 @@ const config = {
           },
         ],
         // copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-        copyright: `Copyright © ${new Date().getFullYear()} 前端摸鱼工程师, Inc. Built with Docusaurus.`,
+        copyright: `摸了个大鱼，<a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备2023020506号-1</a>`,
       },
       prism: {
         theme: lightCodeTheme,
