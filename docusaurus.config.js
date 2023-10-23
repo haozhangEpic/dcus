@@ -14,9 +14,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '墨玉',
+  title: '前端',
   tagline: '乾锻墨玉攻城师',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/panda.png',
 
   // Set the production url of your site here
   url: 'https://haozhangEpic.github.io/',
@@ -74,10 +74,10 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: '摸鱼站',
+        title: '网站',
         logo: {
           alt: 'fish Logo',
-          src: 'img/logo.svg',
+          src: 'img/panda.png',
         },
         items: [
           { type: 'docSidebar', label: 'javascript', sidebarId: 'tutorialSidebar' },
