@@ -10,7 +10,7 @@ import React, { useEffect, useRef } from 'react';
 // import Layout from '@theme/Layout';
 import styles from './index.module.scss'
 import { Video } from '../../utils/Video'
-import VideoView from './components/VideoView';
+import VideoView from '../../components/video/VideoView';
 
 let videoManager = new Video()
 export default function MyReactPage() {

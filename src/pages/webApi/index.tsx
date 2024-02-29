@@ -2,15 +2,15 @@
  * @Author: zhanghao
  * @Date: 2024-02-21 17:14:27
  * @LastEditors: zhanghao
- * @LastEditTime: 2024-02-22 14:44:08
+ * @LastEditTime: 2024-02-29 11:26:02
  * @Description: 
  * @FilePath: \dcus\src\pages\webApi\index.tsx
  */
 import React, { useEffect } from "react";
-import mp3 from './t-rex-roar.mp3'
-import WaveTable from "./wavetable";
+// import mp3 from './t-rex-roar.mp3'
+// import WaveTable from "./wavetable";
 
-const audioCtx = new AudioContext();
+let audioCtx = null;
 const sweepLength = 2;
 let attackTime = 0.2;
 
@@ -58,7 +58,7 @@ export default (): JSX.Element => {
     }
     useEffect(() => {
 
-
+        audioCtx = new window.AudioContext();
 
         const attackControl = document.querySelector("#attack");
         attackControl.addEventListener(
