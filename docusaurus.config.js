@@ -2,8 +2,8 @@
  * @Author: zhanghao
  * @Date: 2023-06-05 17:14:31
  * @LastEditors: zhanghao
- * @LastEditTime: 2023-08-18 16:13:19
- * @Description: 
+ * @LastEditTime: 2024-02-21 11:30:17
+ * @Description:
  * @FilePath: \dcus\docusaurus.config.js
  */
 // @ts-check
@@ -14,40 +14,40 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '前端',
-  tagline: '乾锻墨玉攻城师',
-  favicon: 'img/panda.png',
+  title: "study",
+  tagline: "我爱学习",
+  favicon: "img/panda.png",
 
   // Set the production url of your site here
-  url: 'https://haozhangEpic.github.io/',
+  url: "https://haozhangEpic.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   // baseUrl: '/dcos/',
-  baseUrl: '/',
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'haozhangEpic', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  organizationName: "haozhangEpic", // Usually your GitHub org/user name.
+  projectName: "docs", // Usually your repo name.
+  deploymentBranch: "gh-pages",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
   trailingSlash: false,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale: "zh-Hans",
+    locales: ["zh-Hans"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -62,7 +62,7 @@ const config = {
         // },
         // blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -72,35 +72,44 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: '网站',
+        title: "网站",
         logo: {
-          alt: 'fish Logo',
-          src: 'img/panda.png',
+          alt: "fish Logo",
+          src: "img/panda.png",
         },
         items: [
-          { type: 'docSidebar', label: 'javascript', sidebarId: 'tutorialSidebar' },
+          {
+            type: "docSidebar",
+            label: "javascript",
+            sidebarId: "tutorialSidebar",
+          },
 
-          { type: 'docSidebar', label: 'React', sidebarId: 'react' },
+          { type: "docSidebar", label: "React", sidebarId: "react" },
           // {label:'Vue'},
-          { type: 'docSidebar', label: 'threejs', sidebarId: 'threejs' },
+          { type: "docSidebar", label: "threejs", sidebarId: "threejs" },
           {
-            type: 'docSidebar', label: 'docusaurus', sidebarId: 'docusaurus'
+            type: "docSidebar",
+            label: "docusaurus",
+            sidebarId: "docusaurus",
           },
           {
-            type: 'docSidebar', label: '面试题收集', sidebarId: 'study'
+            type: "docSidebar",
+            label: "面试题收集",
+            sidebarId: "study",
           },
+          { type: "docSidebar", label: "C语言系列", sidebarId: "Clanguage" },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/haozhangEpic',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/haozhangEpic",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           // {
           //   title: 'Docs',
@@ -129,15 +138,15 @@ const config = {
           //   ],
           // },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/haozhangEpic',
+                label: "GitHub",
+                href: "https://github.com/haozhangEpic",
               },
             ],
           },
