@@ -14,8 +14,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "study",
-  tagline: "我爱学习",
+  title: "千语",
+  tagline: "个人记录",
   favicon: "img/panda.png",
 
   // Set the production url of your site here
@@ -74,7 +74,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "网站",
+        title: "千语",
         logo: {
           alt: "fish Logo",
           src: "img/panda.png",

@@ -10,3 +10,29 @@
   height: 200px;
   width: 200px;
 }
+.hover{
+  --delay:0.5s;
+  transition: all var(--delay);
+  border-radius: 10px;
+}
+.hover:hover{
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 1px #cccccc70;
+  backdrop-filter: blur(10px);
+  transform:  translateY(-10px);
+  animation-name: float;
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+}
+@keyframes float {
+  0%{
+    transform:  translateY(-10px);
+  }
+  50%{
+    transform:  translateY(-15px);
+  }
+  100%{
+    transform:  translateY(-10px);
+  }
+}
