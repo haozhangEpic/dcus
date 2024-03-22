@@ -23,22 +23,22 @@ export const FeatureList: FeatureItem[] = [
         url: 'https://github.com/haozhangEpic/awesome-react/tree/master'
     },
     {
-        title: "React",
+        title: "Video",
         Svg: require("@site/static/img/video.svg").default,
-        description: "视频video标签使用样例",
+        description: "视频video标签使用样例（施工中）",
         url: './video'
     },
     {
-        title: "React",
+        title: "GitHub",
         Svg: require("@site/static/img/github.svg").default,
-        description: "个人github主页",
+        description: "全国最大的同性交友网站",
         color: '#087ea',
         url: 'https://github.com/haozhangEpic'
     },
     {
-        title: "React",
+        title: "面试题",
         Svg: require("@site/static/img/niuma.svg").default,
-        description: "牛马面试题",
+        description: "牛马面试题，收集网络以及身边人遇到的面试题",
         color: '#087ea',
         url: '/docs/category/面试题网络收集合集'
     },
