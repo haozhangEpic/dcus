@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { initShader } from '../lib/index'
+import { initShader } from '../../../utils/WebGL/lib/index'
 import styles from './index.module.css';
 
 export default function Index(): JSX.Element {
