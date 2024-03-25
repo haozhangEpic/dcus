@@ -17,9 +17,9 @@
 }
 .hover:hover{
   cursor: pointer;
-  box-shadow: 0px 2px 4px 1px #cccccc70;
+  transform: translateY(-2%);
+  box-shadow: 1px 1px 10px 2px #CCC;
   backdrop-filter: blur(10px);
-  transform:  translateY(-10px);
   animation-name: float;
   animation-delay: var(--delay);
   animation-iteration-count: infinite;
@@ -27,12 +27,12 @@
 }
 @keyframes float {
   0%{
-    transform:  translateY(-10px);
+    transform:  translateY(-2%);
   }
   50%{
-    transform:  translateY(-15px);
+    transform:  translateY(-3%);
   }
   100%{
-    transform:  translateY(-10px);
+    transform:  translateY(-2%);
   }
 }

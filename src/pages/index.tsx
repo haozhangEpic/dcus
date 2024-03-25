@@ -1,11 +1,3 @@
-/*
- * @Author: zhanghao
- * @Date: 2023-06-05 17:14:31
- * @LastEditors: zhanghao
- * @LastEditTime: 2023-07-21 16:25:33
- * @Description: 
- * @FilePath: \dcus\src\pages\index.tsx
- */
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';

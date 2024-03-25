@@ -88,7 +88,22 @@ const config = {
 
           { type: "docSidebar", label: "React", sidebarId: "react" },
           // {label:'Vue'},
-          { type: "docSidebar", label: "threejs", sidebarId: "threejs" },
+          {
+            type: "dropdown",
+            label: "Web3D",
+            items: [
+              {
+                label: 'webgl',
+                type: 'docSidebar',
+                sidebarId: 'webgl'
+              },
+              {
+                label: 'threejs',
+                type: 'docSidebar',
+                sidebarId: 'threejs'
+              }
+            ]
+          },
           {
             type: "docSidebar",
             label: "docusaurus",
@@ -160,7 +175,7 @@ const config = {
       },
       customDocsPath: './src/theme/DocItem.tsx'
     }),
-    plugins: ['docusaurus-plugin-sass'],
+  plugins: ['docusaurus-plugin-sass'],
 };
 
 module.exports = config;

@@ -5,6 +5,9 @@
  */
 
 /* You can override the default Infima variables here. */
+#__docusaurus{
+  display: block;
+}
 :root {
   --ifm-color-primary: #555555;
   --ifm-color-primary-dark: #29784c;
@@ -36,3 +39,4 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
