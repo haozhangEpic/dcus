@@ -1,0 +1,6 @@
+.canvasbg {
+    border: 1px solid gray;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}

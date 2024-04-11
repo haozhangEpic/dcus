@@ -18,7 +18,7 @@ export const FeatureList: FeatureItem[] = [
     {
         title: "React",
         Svg: require("@site/static/img/React.svg").default,
-        description: "对React源码的模仿实现，基本实现了React的大部分功能",
+        description: "对React源码的模仿实现，基本实现了React的基础部分功能",
         color: '#087ea',
         url: 'https://github.com/haozhangEpic/awesome-react/tree/master'
     },
