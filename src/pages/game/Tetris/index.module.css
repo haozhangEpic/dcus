@@ -1,0 +1,7 @@
+.container {
+    text-align: center;
+}
+.actions {
+    display: flex;
+    justify-content: center;
+}
