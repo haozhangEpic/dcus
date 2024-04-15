@@ -17,8 +17,7 @@ export default () => {
     game.current.gameStart();
   };
   const left = () => {
-    console.log("left=================>");
-    // game.current.left();
+    game.current.left();
   };
   const right = () => {
     game.current.right();
