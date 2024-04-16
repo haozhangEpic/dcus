@@ -1,3 +1,11 @@
+/*
+ * @Author: zhanghao
+ * @Date: 2024-04-12 16:47:53
+ * @LastEditors: zhanghao
+ * @LastEditTime: 2024-04-15 16:30:47
+ * @Description: 
+ * @FilePath: \dcus\src\pages\game\Tetris\index.tsx
+ */
 import React, { useEffect, useRef } from "react";
 import Tetris from "@site/src/utils/game/Tetris/index";
 import ClickButton from "@site/src/components/ClickButton";
