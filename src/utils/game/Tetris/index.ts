@@ -3,17 +3,20 @@ interface TetrisOptions {
 }
 let blockconfig = [
   [
-    [1, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
+    [1, 1, 1],
+    [0, 0, 1],
+    [0, 0, 1],
   ],
   [
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
+    [0, 1, 1, 1],
+    [0, 0, 0, 1],
+    [0, 0, 0, 1],
+    [0, 0, 0, 1],
+  ],
+  [
+    [0, 1, 0],
+    [1, 1, 1],
+    [0, 0, 0],
   ],
 ];
 class Tetris {
@@ -24,6 +27,8 @@ class Tetris {
   container: HTMLCanvasElement;
   playerScore: number;
   scene_data: any[];
+  programStatus: number | null;
+  fallSpeed: number;
   [key: string]: any;
 
   constructor({ container }: TetrisOptions) {
@@ -40,7 +45,7 @@ class Tetris {
     this.prevExecutionTime = 0;
     this.curExecutionTime = 0;
     this.container = container;
-    this.programStatus = null; // 1开始，2 暂停， 3结束
+    this.programStatus = null; //null未初始，0等待开始， 1正在运行，2 暂停， 3结束
     this.playerScore = 0;
     this.fallSpeed = 1000;
     this.ctx = null;
@@ -66,6 +71,7 @@ class Tetris {
     this.container.height = this.BACKGROUND_BLOCK_SIZE * this.ROW_MAX + 10;
     ctx.lineWidth = 0.1;
     ctx.fillStyle = "#cccccc";
+    this.clearBoard();
     for (let i = 0; i <= this.ROW_MAX; i++) {
       let y = i * this.BACKGROUND_BLOCK_SIZE + 5;
       ctx.beginPath(); // Start a new path
@@ -83,6 +89,9 @@ class Tetris {
       ctx.stroke(); // Render the path
     }
     this.currentBlock = this.createBlock();
+    let { left } = this.getBlockEdgeMaxIndex(this.currentBlock);
+    this.currentIndex = [Math.floor(this.COL_MAX / 2) - left, 0];
+    this.programStatus = 0;
   }
   merge(
     scene: { [x: string]: { [x: string]: any } },
@@ -315,10 +324,10 @@ class Tetris {
       for (let j = 0; j < element.length; j++) {
         const block = element[j];
         if (block) {
-          top = top < i ? i : top;
+          top = top < i ? top : i;
           bottom = bottom > i ? bottom : i;
-          left = j < left ? j : left;
-          right = j > right ? j : right;
+          left = j <= left ? j : left;
+          right = j >= right ? j : right;
         }
       }
     }
@@ -380,14 +389,14 @@ class Tetris {
     return matrix;
   }
   gameStart() {
-    this.main();
+    this.execChange("start", true);
   }
   main() {
     this.taskFlag = window.requestAnimationFrame((e) => {
       // console.log(curTime - prevTime)
       if (e - this.prevExecutionTime > this.fallSpeed) {
         this.prevExecutionTime = e;
-        if (this.programStatus !== 3) {
+        if (this.programStatus === 1) {
           this.run();
         }
       }
@@ -403,9 +412,18 @@ class Tetris {
   rotate() {
     this.execChange("rotate");
   }
-  execChange(dir: any) {
+  fallDown() {
+    this.execChange("fallDown");
+  }
+  execChange(dir: any, flag: boolean = false) {
+    if (!flag && this.programStatus !== 1) {
+      return false;
+    }
     let result = null;
     switch (dir) {
+      case "start":
+        this.main();
+        break;
       case "left":
         result = this.check("axis_l", this.scene_data, this.currentBlock, [
           this.currentIndex[0] - 1,
@@ -448,14 +466,60 @@ class Tetris {
           this.draw(this.scene_data);
         }
         break;
+      case "fallDown":
+        // 计算有效位置
+        let { left, bottom, right, top } = this.getBlockEdgeMaxIndex(
+          this.currentBlock
+        );
+        let maxDownIndex = this.scene_data.length - 1;
+        for (let i = left; i <= right; i++) {
+          for2: for (let j = bottom; j >= top; j--) {
+            const element = this.currentBlock[j];
+            if (element[i]) {
+              for (
+                let i_ = this.scene_data.length - 1;
+                i_ >= this.currentIndex[1] - this.currentBlock.length + 1 + j;
+                i_--
+              ) {
+                console.log("falldonw=================>", i, j);
+                if (this.scene_data[i_][i + this.currentIndex[0]]) {
+                  maxDownIndex = i_ < maxDownIndex ? i_ : maxDownIndex;
+                }
+              }
+              break for2;
+            }
+          }
+        }
+        if (maxDownIndex) {
+          this.currentIndex = [
+            this.currentIndex[0],
+            maxDownIndex + this.currentBlock.length - 1 - bottom,
+          ];
+          this.draw(this.scene_data);
+        }
+        // console.log(
+        //   "falldown====================>",
+        //   maxDownIndex,
+        //   left,
+        //   bottom,
+        //   right,
+        //   top
+        // );
+        break;
       default:
         break;
     }
   }
   reset() {
+    this.programStatus = 0;
     this.currentBlock = this.createBlock();
     let { left } = this.getBlockEdgeMaxIndex(this.currentBlock);
     this.currentIndex = [Math.floor(this.COL_MAX / 2) - left, 0];
+  }
+  pause() {
+    window.cancelAnimationFrame(this.taskFlag);
+    this.taskFlag = null;
+    this.programStatus = 2;
   }
 }
 export default Tetris;
