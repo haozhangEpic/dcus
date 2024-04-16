@@ -389,6 +389,7 @@ class Tetris {
     return matrix;
   }
   gameStart() {
+    this.programStatus = 1
     this.execChange("start", true);
   }
   main() {
