@@ -475,14 +475,13 @@ class Tetris {
         let maxDownIndex = this.scene_data.length - 1;
         for (let i = left; i <= right; i++) {
           for2: for (let j = bottom; j >= top; j--) {
-            const element = this.currentBlock[j];
-            if (element[i]) {
+            const element = this.currentBlock[j][i];
+            if (element) {
               for (
                 let i_ = this.scene_data.length - 1;
                 i_ >= this.currentIndex[1] - this.currentBlock.length + 1 + j;
                 i_--
               ) {
-                console.log("falldonw=================>", i, j);
                 if (this.scene_data[i_][i + this.currentIndex[0]]) {
                   maxDownIndex = i_ < maxDownIndex ? i_ : maxDownIndex;
                 }
@@ -494,7 +493,7 @@ class Tetris {
         if (maxDownIndex) {
           this.currentIndex = [
             this.currentIndex[0],
-            maxDownIndex + this.currentBlock.length - 1 - bottom,
+            maxDownIndex - this.currentBlock.length + 1 + bottom,
           ];
           this.draw(this.scene_data);
         }
