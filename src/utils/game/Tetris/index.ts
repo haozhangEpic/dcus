@@ -29,6 +29,7 @@ class Tetris {
   scene_data: any[];
   programStatus: number | null;
   fallSpeed: number;
+  currentBlock: any[];
   [key: string]: any;
 
   constructor({ container }: TetrisOptions) {
@@ -90,7 +91,7 @@ class Tetris {
     }
     this.currentBlock = this.createBlock();
     let { left } = this.getBlockEdgeMaxIndex(this.currentBlock);
-    this.currentIndex = [Math.floor(this.COL_MAX / 2) - left, 0];
+    this.currentIndex = [Math.floor(this.COL_MAX / 2 - left), -1];
     this.programStatus = 0;
   }
   merge(
@@ -389,7 +390,7 @@ class Tetris {
     return matrix;
   }
   gameStart() {
-    this.programStatus = 1
+    this.programStatus = 1;
     this.execChange("start", true);
   }
   main() {
@@ -477,34 +478,29 @@ class Tetris {
           for2: for (let j = bottom; j >= top; j--) {
             const element = this.currentBlock[j][i];
             if (element) {
+              let stackMinIndex = this.scene_data.length - 1;
               for (
                 let i_ = this.scene_data.length - 1;
-                i_ >= this.currentIndex[1] - this.currentBlock.length + 1 + j;
+                i_ >= this.currentIndex[1] - this.currentBlock.length + 1 + j &&
+                i_ >= 0;
                 i_--
               ) {
                 if (this.scene_data[i_][i + this.currentIndex[0]]) {
-                  maxDownIndex = i_ < maxDownIndex ? i_ : maxDownIndex;
+                  stackMinIndex = i_ < stackMinIndex ? i_ : stackMinIndex;
+                  stackMinIndex -= 1;
                 }
+              }
+              if (stackMinIndex < this.scene_data.length - 1) {
+                maxDownIndex = stackMinIndex + this.currentBlock.length - 1 - j;
               }
               break for2;
             }
           }
         }
         if (maxDownIndex) {
-          this.currentIndex = [
-            this.currentIndex[0],
-            maxDownIndex - this.currentBlock.length + 1 + bottom,
-          ];
+          this.currentIndex = [this.currentIndex[0], maxDownIndex];
           this.draw(this.scene_data);
         }
-        // console.log(
-        //   "falldown====================>",
-        //   maxDownIndex,
-        //   left,
-        //   bottom,
-        //   right,
-        //   top
-        // );
         break;
       default:
         break;
@@ -513,8 +509,14 @@ class Tetris {
   reset() {
     this.programStatus = 0;
     this.currentBlock = this.createBlock();
+    this.playerScore = 0;
+    this.clearBoard();
     let { left } = this.getBlockEdgeMaxIndex(this.currentBlock);
-    this.currentIndex = [Math.floor(this.COL_MAX / 2) - left, 0];
+    this.scene_data = Array.from({ length: this.ROW_MAX }, () =>
+      Array.from({ length: this.COL_MAX }).fill(0)
+    );
+    this.currentIndex = [Math.floor(this.COL_MAX / 2) - left, -1];
+    this.draw(this.scene_data);
   }
   pause() {
     window.cancelAnimationFrame(this.taskFlag);
