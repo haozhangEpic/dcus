@@ -1,5 +1,5 @@
 import { createRef, useEffect, useState } from "react";
-import { getData } from "./utils";
+import { getData } from "../../utils/virtualScrolling/utils";
 import styles from "./index.module.css";
 import React from "react";
 export default function LimitVirtualList(): JSX.Element {
