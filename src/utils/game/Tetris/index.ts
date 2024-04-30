@@ -1,6 +1,7 @@
 interface TetrisOptions {
   container: HTMLCanvasElement;
 }
+import bgSound from "@site/static/game/audio/doudizhu_bg.mp3";
 let blockconfig = [
   [
     [1, 1, 1],
@@ -30,6 +31,7 @@ class Tetris {
   programStatus: number | null;
   fallSpeed: number;
   currentBlock: any[];
+  bgSound: HTMLAudioElement;
   [key: string]: any;
 
   constructor({ container }: TetrisOptions) {
@@ -93,6 +95,11 @@ class Tetris {
     let { left } = this.getBlockEdgeMaxIndex(this.currentBlock);
     this.currentIndex = [Math.floor(this.COL_MAX / 2 - left), -1];
     this.programStatus = 0;
+    this.initAudio();
+  }
+  initAudio() {
+    let audio = new Audio(bgSound);
+    this.bgSound = audio;
   }
   merge(
     scene: { [x: string]: { [x: string]: any } },
@@ -341,6 +348,8 @@ class Tetris {
   }
   // 游戏结束
   gameOver() {
+    this.bgSound.pause()
+    this.bgSound.currentTime = 0
     this.programStatus = 3;
     cancelAnimationFrame(this.taskFlag);
     this.taskFlag = null;
@@ -391,6 +400,7 @@ class Tetris {
   }
   gameStart() {
     this.programStatus = 1;
+    this.bgSound.play()
     this.execChange("start", true);
   }
   main() {
@@ -522,6 +532,7 @@ class Tetris {
     window.cancelAnimationFrame(this.taskFlag);
     this.taskFlag = null;
     this.programStatus = 2;
+    this.bgSound.pause()
   }
 }
 export default Tetris;

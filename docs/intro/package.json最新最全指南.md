@@ -33,9 +33,7 @@ package.json对于大部分前端开发者来说，知道dependencies与devDepen
 项目作者
 
 ```js
-js
-
-复制代码"author": "name (http://barnyrubble.tumblr.com/)"
+"author": "name (http://barnyrubble.tumblr.com/)"
 ```
 
 ## 4. contributors
@@ -43,7 +41,7 @@ js
 项目贡献者
 
 ```js
-js复制代码  "contributors": [
+"contributors": [
     "name <b@rubble.com> (http://barnyrubble.tumblr.com/)"
   ]
 ```
@@ -61,7 +59,7 @@ js复制代码  "contributors": [
 项目提交问题的地址
 
 ```js
-js复制代码 //提交问题的地址和反馈的邮箱,url通常是Github中的issues页面
+//提交问题的地址和反馈的邮箱,url通常是Github中的issues页面
 "bugs": { 
   "url" : "https://github.com/facebook/react/issues", 
   "email" : "xxxxx@xx.com"
@@ -73,7 +71,7 @@ js复制代码 //提交问题的地址和反馈的邮箱,url通常是Github中�
 指定项目的资金支持方式和链接
 
 ```js
-js复制代码  "funding": {
+"funding": {
     "type": "patreon",
     "url": "https://www.patreon.com/my-module"
   }
@@ -101,7 +99,7 @@ js复制代码  "funding": {
 示例：声明要使用组件库，需在项目中安装大于17.0.1版本的react
 
 ```js
-js复制代码  "peerDependencies": {
+"peerDependencies": {
     "react": ">17.0.1"
   }
 ```
@@ -111,7 +109,7 @@ js复制代码  "peerDependencies": {
 将对等依赖标记为可选，如果用户没有安装对等依赖，npm不会发出警告
 
 ```js
-js复制代码  "peerDependenciesMeta": {
+"peerDependenciesMeta": {
     "react": {
       "optional": true //标记为可选
     }
@@ -131,7 +129,7 @@ js复制代码  "peerDependenciesMeta": {
 声明对npm或node的版本要求
 
 ```js
-js复制代码  "engines": {
+"engines": {
     "node": ">=8.10.3 <12.13.0",
     "npm": ">=6.9.0"
   }
@@ -146,15 +144,13 @@ js复制代码  "engines": {
 ### 1. 初始化项目
 
 ```js
-js
-
-复制代码npm init -y
+npm init -y
 ```
 
 ### 2. 声明本项目是workspaces模式
 
 ```js
-js复制代码  "private":"true",
+"private":"true",
   "workspaces": [
     "packages/*" 
   ],
@@ -165,9 +161,7 @@ js复制代码  "private":"true",
 ### 3. 创建子包p1
 
 ```js
-js
-
-复制代码npm init -w packages/p1 -y
+npm init -w packages/p1 -y
 ```
 
 在node_modules/.package-lock.json中可以看到 "link": true 链接符号信息
@@ -175,25 +169,19 @@ js
 ### 4. 新建packages/p1/index.js
 
 ```js
-js
-
-复制代码module.exports = "p1包";
+module.exports = "p1包";
 ```
 
 ### 5. 创建子包p2
 
 ```js
-js
-
-复制代码npm init -w packages/p2 -y
+npm init -w packages/p2 -y
 ```
 
 ### 6. 将子包p1添加到p2中
 
 ```js
-js
-
-复制代码npm i p1 -w p2
+npm i p1 -w p2
 ```
 
 安装，卸载等命令都是一样的，只是多了"--workspace="参数（简写-w），用来指定在哪个包中执行命令
@@ -201,7 +189,7 @@ js
 ### 7. 子包p2使用p1
 
 ```js
-js复制代码const p1 = require("p1");
+const p1 = require("p1");
 
 console.log("使用", p1);
 
@@ -223,7 +211,7 @@ workspaces功能与lerna类似，如果只需简单地管理多个包，workspac
 ### 1. config 配置
 
 ```js
-js复制代码  "config": {
+"config": {
     "baseUrl": "https://example.com"
   }
 ```
@@ -231,7 +219,7 @@ js复制代码  "config": {
 ### 2. scripts 配置
 
 ```js
-js复制代码  "scripts": {
+"scripts": {
     "start": "node index.js",
   },
 ```
@@ -239,7 +227,7 @@ js复制代码  "scripts": {
 ### 3. 新建index.js
 
 ```js
-js复制代码//使用process.env.npm_package_config_XXX取值
+//使用process.env.npm_package_config_XXX取值
 console.log(process.env.npm_package_config_baseUrl)
 ```
 
@@ -254,9 +242,7 @@ console.log(process.env.npm_package_config_baseUrl)
 示例：当其他开发者在他们的项目中导入你的包时，会加载并执行包中的dist/index.esm.js
 
 ```js
-js
-
-复制代码"main": "dist/index.esm.js"
+"main": "dist/index.esm.js"
 ```
 
 ## 2. main
@@ -288,7 +274,7 @@ js
 "types": 指定了类型声明文件的路径
 
 ```js
-js复制代码  "exports": {
+"exports": {
     ".": {
       "import": "./dist/index.esm.js",
       "require": "./dist/index.cjs.js",
@@ -301,7 +287,7 @@ js复制代码  "exports": {
 导出其他文件，例如除了导出默认路径，导出源文件
 
 ```js
-js复制代码  "exports":{
+"exports":{
     ...
   "./main" : "./src/main.js"
 },
@@ -310,7 +296,7 @@ js复制代码  "exports":{
 其他项目中使用
 
 ```js
-js复制代码import main from 'packageName'; // . 方式定义的
+import main from 'packageName'; // . 方式定义的
 import main from 'packageName/main'; // ./main 方式定义的
 ```
 
@@ -321,9 +307,7 @@ import main from 'packageName/main'; // ./main 方式定义的
 示例：指定模块系统为ES module模式，使用CommonJS文件时，需显式的定义为 .cjs 文件扩展名，来明确指定这些文件为 CommonJS 模块
 
 ```js
-js
-
-复制代码"type":"module"
+"type":"module"
 ```
 
 ## 7. files
@@ -333,7 +317,7 @@ js
 示例：只推送index.js和dist包到npm服务器
 
 ```js
-js复制代码  "files": [
+"files": [
     "index.js",
     "dist"
   ],
@@ -346,7 +330,7 @@ js复制代码  "files": [
 定义在全局安装时可执行的命令，例如构建脚手架
 
 ```js
-js复制代码{
+{
   "bin": "cli.js", // 手动添加入口文件为 cli.js
 }
 ```
@@ -378,7 +362,7 @@ Linux 中的帮助指令（使用情景较少）
 示例：指定包发布的注册表 URL，指定所有用户都可以访问（私有的会收费）
 
 ```js
-js复制代码  "publishConfig": {
+"publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
@@ -391,17 +375,13 @@ js复制代码  "publishConfig": {
 示例：包只适用于darwin（macOS）和 linux
 
 ```js
-js
-
-复制代码"os": ["darwin", "linux"]
+"os": ["darwin", "linux"]
 ```
 
 示例：禁用win32
 
 ```js
-js
-
-复制代码"os" ["!win32"] //禁用的操作系统
+"os" ["!win32"] //禁用的操作系统
 ```
 
 ## 5. cpu
@@ -437,9 +417,7 @@ unpkg 是一个基于 CDN 的前端包托管服务，用于在浏览器中直接
 无需下载，直接通过 `<script>` 标签引用
 
 ```js
-js
-
-复制代码<script src="https://unpkg.com/package-name@version"></script>
+<script src="https://unpkg.com/package-name@version"></script>
 ```
 
 ## 4. lint-staged
@@ -453,7 +431,7 @@ lint-staged是一个在Git暂存文件上运行linters的工具，通常配合gi
 告知支持哪些浏览器及版本，Autoprefixer常用到它
 
 ```js
-js复制代码  "browserslist": [
+"browserslist": [
     "defaults",
     "not ie < 8",
     "last 2 versions",
@@ -475,7 +453,5 @@ js复制代码  "browserslist": [
 2. 告诉构建工具不要将样式文件排除在无用代码消除的优化范围之外
 
 ```js
-js
-
-复制代码"sideEffects": ["./path/to/module.js", "*.css"]
+"sideEffects": ["./path/to/module.js", "*.css"]
 ```
