@@ -1,7 +1,6 @@
 interface TetrisOptions {
   container: HTMLCanvasElement;
 }
-import bgSound from "@site/static/game/audio/doudizhu_bg.mp3";
 let blockconfig = [
   [
     [1, 1, 1],
@@ -98,8 +97,10 @@ class Tetris {
     this.initAudio();
   }
   initAudio() {
-    let audio = new Audio(bgSound);
-    this.bgSound = audio;
+    import("@site/static/game/audio/doudizhu_bg.mp3").then((bgSound) => {
+      let audio = new Audio(bgSound.default);
+      this.bgSound = audio;
+    });
   }
   merge(
     scene: { [x: string]: { [x: string]: any } },
@@ -348,8 +349,8 @@ class Tetris {
   }
   // 游戏结束
   gameOver() {
-    this.bgSound.pause()
-    this.bgSound.currentTime = 0
+    this.bgSound.pause();
+    this.bgSound.currentTime = 0;
     this.programStatus = 3;
     cancelAnimationFrame(this.taskFlag);
     this.taskFlag = null;
@@ -400,7 +401,7 @@ class Tetris {
   }
   gameStart() {
     this.programStatus = 1;
-    this.bgSound.play()
+    this.bgSound.play();
     this.execChange("start", true);
   }
   main() {
@@ -532,7 +533,7 @@ class Tetris {
     window.cancelAnimationFrame(this.taskFlag);
     this.taskFlag = null;
     this.programStatus = 2;
-    this.bgSound.pause()
+    this.bgSound.pause();
   }
 }
 export default Tetris;
