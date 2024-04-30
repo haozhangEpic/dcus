@@ -97,10 +97,8 @@ class Tetris {
     this.initAudio();
   }
   initAudio() {
-    import("@site/static/game/audio/doudizhu_bg.mp3").then((bgSound) => {
-      let audio = new Audio(bgSound.default);
-      this.bgSound = audio;
-    });
+    let audio = new Audio("/game/audio/doudizhu_bg.mp3");
+    this.bgSound = audio;
   }
   merge(
     scene: { [x: string]: { [x: string]: any } },
