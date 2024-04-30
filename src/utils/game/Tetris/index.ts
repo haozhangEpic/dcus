@@ -97,7 +97,7 @@ class Tetris {
     this.initAudio();
   }
   initAudio() {
-    let audio = new Audio("/game/audio/doudizhu_bg.mp3");
+    let audio = new Audio("/assets/game/audio/doudizhu_bg.mp3");
     this.bgSound = audio;
   }
   merge(
